@@ -16,6 +16,10 @@ class App extends React.Component {
     this.setState({ user: null });
   }
 
+  handleSignupOrLogin = () => {
+    this.setState({ user: userService.getUser() })
+  }
+
   render() {
     return (
       <div className="App">

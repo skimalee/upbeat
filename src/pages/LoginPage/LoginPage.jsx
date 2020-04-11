@@ -17,7 +17,9 @@ class LoginPage extends Component {
   handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      await userService.login(this.state)
       this.props.handleSignupOrLogin();
+
     
     } catch (err) {
       // Use a modal or toast in your apps instead of alert

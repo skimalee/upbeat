@@ -16,7 +16,7 @@ class SignupForm extends Component {
         event.preventDefault();
         try {
             await userService.signup(this.state)
-            console.log('success')
+            this.props.handleSignupOrLogin()
         }
         catch(err) {
             console.log(err)
