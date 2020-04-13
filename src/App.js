@@ -1,10 +1,10 @@
 import React from 'react';
 import './App.css';
-import SignupForm from './components/SignupForm/SignupForm'
 import userService from './utils/userService'
 import { Switch, Route } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import LoginPage from './pages/LoginPage/LoginPage'
+import Splash from './components/Splash/Splash'
 
 class App extends React.Component {
   state = {
@@ -24,8 +24,10 @@ class App extends React.Component {
     return (
       <div className="App">
         <NavBar user={this.state.user} handleLogout={this.handleLogout}/>
-        <SignupForm handleSignupOrLogin={this.handleSignupOrLogin}/>
-        <LoginPage handleSignupOrLogin={this.handleSignupOrLogin} />
+        <Switch>
+          <Route path='/' exact render={() => (<Splash/>)} />
+          <Route path='/login' exact render={(props) => (<LoginPage {...props} handleSignupOrLogin={this.handleSignupOrLogin}/>)} />
+        </Switch>
       </div>
     );
   }
