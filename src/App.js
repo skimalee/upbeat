@@ -5,6 +5,7 @@ import { Switch, Route } from 'react-router-dom'
 import NavBar from './components/NavBar/NavBar'
 import LoginPage from './pages/LoginPage/LoginPage'
 import Splash from './components/Splash/Splash'
+import Dashboard from './pages/Dashboard/Dashboard'
 
 class App extends React.Component {
   state = {
@@ -26,7 +27,8 @@ class App extends React.Component {
         <NavBar user={this.state.user} handleLogout={this.handleLogout}/>
         <Switch>
           <Route path='/' exact render={() => (<Splash/>)} />
-          <Route path='/login' exact render={(props) => (<LoginPage {...props} handleSignupOrLogin={this.handleSignupOrLogin}/>)} />
+          <Route path='/login' exact render={(props) => (<LoginPage handleSignupOrLogin={this.handleSignupOrLogin}/>)} />
+          <Route path='/dashboard' exact render={(props) => (<Dashboard user={this.state.user}/>)} />
         </Switch>
       </div>
     );

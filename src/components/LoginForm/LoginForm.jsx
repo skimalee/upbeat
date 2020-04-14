@@ -1,13 +1,14 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import userService from '../../utils/userService'
-import { Input } from './style'
+import { withRouter } from 'react-router-dom'
+import { Form } from '../../pages/LoginPage/style'
 
 class LoginForm extends Component {
   state = {
     email: '',
     pw: ''
   };
+
   handleChange = (event) => {
     this.setState({ [event.target.name]: event.target.value });
   }
@@ -20,7 +21,7 @@ class LoginForm extends Component {
         email: '',
         pw: ''
       })
-      this.props.history.push('/')
+      this.props.history.push('/dashboard')
     } catch (err) {
 
       alert('Invalid Credentials!');
@@ -30,16 +31,21 @@ class LoginForm extends Component {
 
   render() {
     return (
-        <form className="form-horizontal" onSubmit={this.handleSubmit} >
-            <Input type="email" className="form-control" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
-            <Input type="password" className="form-control" placeholder="Password" value={this.state.pw} name="pw" onChange={this.handleChange} />
-            <br />
-            <button className="btn btn-default">Log In</button>&nbsp;&nbsp;&nbsp;
-            <Link to='/'>Cancel</Link>
-            <Link to='/signup' className='NavBar-link'>SIGN UP</Link>
-        </form>
+      <>
+        <Form onSubmit={this.handleSubmit} >
+          <input type="email" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
+          <input type="password"  placeholder="Password" value={this.state.pw} name="pw" onChange={this.handleChange} />
+            <div className="choiceContainer">
+              <div style={{ alignSelf: 'center' }}>
+                <div>Don't have an account?</div>
+                <p style={{ margin: 0 }}>Sign Up <span onClick={this.props.doHandleToggle} style={{ color: 'dodgerblue', cursor: 'pointer' }}>Here</span></p>
+              </div>
+              <button color={'dodgerblue'} type='submit' style={{ display: 'block' }}>Submit</button>
+            </div>
+        </Form>
+      </>
     );
   }
 }
 
-export default LoginForm;
+export default withRouter(LoginForm);

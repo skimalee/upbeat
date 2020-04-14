@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import userService from '../../utils/userService'
-import { Input } from './style'
+import { Form } from '../../pages/LoginPage/style'
 import { withRouter } from 'react-router-dom'
 
 class SignupForm extends Component {
@@ -8,32 +8,41 @@ class SignupForm extends Component {
         name: '',
         email: '',
         password: '',
-    } 
+        
+    }
 
     handleChange = (event) => {
-        this.setState({[event.target.name]: event.target.value});
+        this.setState({ [event.target.name]: event.target.value });
     }
-    
-    handleSubmit = async(event) => {
+
+    handleSubmit = async (event) => {
         event.preventDefault();
         try {
             await userService.signup(this.state)
             this.props.handleSignupOrLogin()
-            this.props.history.push('/');
+            this.props.history.push('/dashboard');
         }
-        catch(err) {
+        catch (err) {
             console.log(err)
         }
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
-                <Input type='text' name='name' placeholder='name' onChange={this.handleChange}/>
-                <Input type='email' name='email' placeholder='email' onChange={this.handleChange} />
-                <Input type='password' name='password' placeholder='password' onChange={this.handleChange} />
-                <input type='submit' />
-            </form>
+            <>
+                <Form onSubmit={this.handleSubmit}>
+                    <input type='text' name='name' placeholder='name' onChange={this.handleChange} />
+                    <input type='email' name='email' placeholder='email' onChange={this.handleChange} />
+                    <input type='password' name='password' placeholder='password' onChange={this.handleChange} />
+                    <div className="choiceContainer">
+                        <div style={{ alignSelf: 'center' }}>
+                            <div>Already have an account?</div>
+                            <p style={{ margin: 0 }}>Sign In <span onClick={this.props.doHandleToggle} style={{ color: 'dodgerblue', cursor: 'pointer' }}>Here</span></p>
+                        </div>
+                        <button type='submit' style={{ display: 'block' }}>Submit</button>
+                    </div>
+                </Form>
+            </>
         )
     }
 }
