@@ -45,7 +45,7 @@ class App extends React.Component {
           <Route path="/" exact render={() => <Splash />} />
           <Route
             path="/login"
-            exactender={() => (
+            exact render={() => (
               <LoginPage handleSignupOrLogin={this.handleSignupOrLogin} />
             )}
           />

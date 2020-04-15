@@ -24,11 +24,21 @@ export const Container = styled.div`
 `
 
 export const FormContainer = styled.div`
-	margin: auto;
-	width: 50%;
-	animation: 1s ${fadeInDown};
-	/* width: 75%; */
-	/* text-align: center; */
+	position: absolute;
+	top: 0;
+	height: 100%;
+	transition: all 0.6s ease-in-out;
+	&.sign-in-container {
+		left: 0;
+		width: 50%;
+		z-index: 2;
+	}
+	&.sign-up-container {
+		left: 0;
+		width: 50%;
+		opacity: 0;
+		z-index: 1;
+	}
 
 	/* position: absolute;
 	top: 0;
@@ -68,35 +78,12 @@ export const Input = styled.input`
 `
 
 export const Form = styled.form`
-    display: flex;
-    flex-direction: column;
+	background-color: #FFFFFF;
+	display: flex;
 	align-items: center;
-	& > input {
-		background-color: #eee;
-		border: none;
-		padding: 12px 15px;
-		margin: 8px 0;
-		width: 90%;
-	}
-	& > button {
-		display: inline-block;
-		font-weight: 400;
-		text-align: center;
-		white-space: nowrap;
-		vertical-align: middle;
-		user-select: none;
-		border: 1px solid white;
-		padding: .375rem .75rem;
-		font-size: 1rem;
-		line-height: 1.5;
-		border-radius: .25rem;
-		margin-left: auto;
-		color: white;
-		background-color: ${props => props.color ? props.color : 'white'};
-	}
-	& > .choiceContainer {
-		display: flex;
-		width: 100%;
-		justify-content: space-between;
-	}
+	justify-content: center;
+	flex-direction: column;
+	padding: 0 50px;
+	height: 100%;
+	text-align: center;
 `
