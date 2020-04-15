@@ -1,26 +1,13 @@
-import React, { Component } from 'react';
-import { SearchBarContainer } from './style';
-import SearchField from "react-search-field";
+import React, { Component } from "react";
+import { SearchBarContainer } from "./style";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
-
-
-class Dashboard extends Component {
-    state = {
-
-    }
-
-    onChange
-
-    render() {
-        return (
-            <SearchBarContainer>
-                <SearchField
-                    placeholder="Search for an artist"
-                    // onChange={onChange}
-                />
-            </SearchBarContainer>
-        );
-    }
+const Dashboard = (props) => {
+  return (
+    <SearchBarContainer>
+      <SearchBar searchTM={props.searchTM} />
+    </SearchBarContainer>
+  );
 };
 
 export default Dashboard;

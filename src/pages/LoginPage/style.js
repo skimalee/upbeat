@@ -12,15 +12,15 @@ export const Background = styled.div`
 `
 
 export const Container = styled.div`
-	display: flex;
-	background-color: rgba(255, 255, 255, .75);
+	background-color: #fff;
 	border-radius: 10px;
   	box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-			    0 10px 10px rgba(0,0,0,0.22);
+			0 10px 10px rgba(0,0,0,0.22);
 	position: relative;
 	overflow: hidden;
-	width: 40rem;
-	height: 20rem;
+	width: 768px;
+	max-width: 100%;
+	min-height: 480px;
 `
 
 export const FormContainer = styled.div`
