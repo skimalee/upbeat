@@ -39,42 +39,27 @@ export const FormContainer = styled.div`
 		opacity: 0;
 		z-index: 1;
 	}
-
-	/* position: absolute;
-	top: 0;
-	height: 100%;
-	transition: all 0.6s ease-in-out;
-	left: 0;
-	width: 50%;
-	opacity: 0;
-	z-index: 1; */
-	`
-
-
-
-export const SignupContainer = styled.div`
-	margin: auto;
-	width: 50%;
-	animation: 1s ${fadeInDown};
-	/* position: absolute;
-	top: 0;
-	height: 100%;
-	left: 0;
-	width: 50%;
-	z-index: 2;
-	transition: all 0.6s ease-in-out; */
-	`
-
-export const OverlayContainer = styled.div`
-
 `
 
-export const Input = styled.input`
+export const FormInput = styled.input`
 	background-color: #eee;
 	border: none;
 	padding: 12px 15px;
 	margin: 8px 0;
-	width: 75%;
+	width: 100%;
+`
+
+export const FormButton = styled.button`
+	border-radius: 20px;
+	border: 1px solid #FF4B2B;
+	background-color: #FF4B2B;
+	color: #FFFFFF;
+	font-size: 12px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: transform 80ms ease-in;
 `
 
 export const Form = styled.form`

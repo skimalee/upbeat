@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
 import LoginForm from '../../components/LoginForm/LoginForm'
 import SignupForm from '../../components/SignupForm/SignupForm'
-
-
+import userService from '../../utils/userService'
+import { withRouter } from 'react-router-dom'
 import {
   Background,
   Container,
   Form,
+  FormInput,
+  FormButton,
   LoginContainer,
   SignupContainer,
   OverlayContainer,
@@ -15,7 +17,29 @@ import {
 
 class LoginPage extends Component {
   state = {
-    isLoginForm: true
+    isLoginForm: true,
+    email: '',
+    pw: ''
+  }
+
+  handleLoginChange = (event) => {
+    this.setState({ [event.target.name]: event.target.value });
+  }
+  handleLoginSubmit = async (e) => {
+    e.preventDefault();
+    try {
+      await userService.login(this.state);
+      this.props.handleSignupOrLogin();
+      this.setState({
+        email: '',
+        pw: ''
+      })
+      this.props.history.push('/dashboard')
+    } catch (err) {
+
+      alert('Invalid Credentials!');
+      console.log(err)
+    }
   }
 
   doHandleToggle = () => this.setState({ isLoginForm: !this.state.isLoginForm })
@@ -26,22 +50,22 @@ class LoginPage extends Component {
 
     return (
       <Container>
-        <FormContainer className="sign-up-container">
+        {/* <FormContainer className="sign-up-container">
           <Form action="#">
             <h1>Create Account</h1>
-            <input type="text" placeholder="Name" />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
-            <button>Sign Up</button>
+            <FormInput type="text" placeholder="Name" />
+            <FormInput type="email" placeholder="Email" />
+            <FormInput type="password" placeholder="Password" />
+            <FormButton>Sign Up</FormButton>
           </Form>
         </FormContainer>
         <FormContainer className="sign-in-container">
-          <Form action="#">
+          <Form action="#" onSubmit={this.handleLoginSubmit}>
             <h1>Sign in</h1>
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Password" />
+            <FormInput type="email" placeholder="Email" onChange={this.handleLoginChange}/>
+            <FormInput type="password" placeholder="Password" onChange={this.handleLoginChange} />
             <a href="#">Forgot your password?</a>
-            <button>Sign In</button>
+            <FormButton>Sign In</FormButton>
           </Form>
         </FormContainer>
         <div class="overlay-container">
@@ -57,11 +81,13 @@ class LoginPage extends Component {
               <button class="ghost" id="signUp">Sign Up</button>
             </div>
           </div>
-        </div>
+        </div> */}
+        <LoginForm handleSignupOrLogin={this.props.handleSignupOrLogin}/>
+        <SignupForm handleSignupOrLogin={this.props.handleSignupOrLogin}/>
       </Container>
 
     );
   }
 }
 
-export default LoginPage;
+export default withRouter(LoginPage);

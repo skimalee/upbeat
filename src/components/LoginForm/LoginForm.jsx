@@ -21,7 +21,7 @@ class LoginForm extends Component {
         email: '',
         pw: ''
       })
-      this.props.history.push('/dashboard')
+      this.props.history.push('/search')
     } catch (err) {
 
       alert('Invalid Credentials!');

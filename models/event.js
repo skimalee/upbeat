@@ -1,9 +1,6 @@
 const mongoose = require('mongoose')
 const Schema = mongoose.Schema;
 
-const imageSchema = new Schema({
-    
-})
 
 const eventSchema = new Schema({
     name: String,
@@ -12,7 +9,10 @@ const eventSchema = new Schema({
         type: Number,
         min: 0
     },
-    images: [imageSchema]
+    users: [{
+        type: Schema.Types.ObjectId,
+        ref: 'User'
+    }]
 });
 
 module.exports = mongoose.model('Event', eventSchema)

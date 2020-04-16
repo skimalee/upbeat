@@ -1,11 +1,15 @@
+import tokenService from "./tokenService";
+
 // const BASE_URL = "https://app.ticketmaster.com/discovery/v2/";
 const BASE_URL = "/api/ticketmaster/";
 
-export default async function routeToTM(query) {
-  console.log("hitting route to TM", query);
-  await fetch(BASE_URL + "get", {
+  async function routeToTM(query) {
+  return fetch(BASE_URL + "get", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: { 
+      "Content-Type": "application/json",
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    },
     body: JSON.stringify({query}),
   })
   .then(res => {
@@ -13,6 +17,12 @@ export default async function routeToTM(query) {
     throw new Error("Invalid request to TM");
   })
   .then(data => {
-    console.log("response from route to TM", data);
+    if (data.data._embedded) {
+      return data.data._embedded.events
+    } else {
+      return null
+    }
   })
 }
+
+export default {routeToTM}
