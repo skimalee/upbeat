@@ -12,7 +12,9 @@ import {
   LoginContainer,
   SignupContainer,
   OverlayContainer,
-  FormContainer
+  FormContainer,
+  Overlay,
+  OverlayPanel
 } from './style'
 
 class LoginPage extends Component {
@@ -50,7 +52,7 @@ class LoginPage extends Component {
 
     return (
       <Container>
-        {/* <FormContainer className="sign-up-container">
+        <FormContainer className="sign-up-container">
           <Form action="#">
             <h1>Create Account</h1>
             <FormInput type="text" placeholder="Name" />
@@ -68,22 +70,22 @@ class LoginPage extends Component {
             <FormButton>Sign In</FormButton>
           </Form>
         </FormContainer>
-        <div class="overlay-container">
-          <div class="overlay">
-            <div class="overlay-panel overlay-left">
+        <OverlayContainer>
+          <Overlay>
+            <OverlayPanel className="overlay-left">
               <h1>Welcome Back!</h1>
               <p>To keep connected with us please login with your personal info</p>
               <button class="ghost" id="signIn">Sign In</button>
-            </div>
-            <div class="overlay-panel overlay-right">
+            </OverlayPanel>
+            <OverlayPanel className="overlay-right">
               <h1>Hello, Friend!</h1>
               <p>Enter your personal details and start journey with us</p>
               <button class="ghost" id="signUp">Sign Up</button>
-            </div>
-          </div>
-        </div> */}
-        <LoginForm handleSignupOrLogin={this.props.handleSignupOrLogin}/>
-        <SignupForm handleSignupOrLogin={this.props.handleSignupOrLogin}/>
+            </OverlayPanel>
+          </Overlay>
+        </OverlayContainer>
+        {/* <LoginForm handleSignupOrLogin={this.props.handleSignupOrLogin}/>
+        <SignupForm handleSignupOrLogin={this.props.handleSignupOrLogin}/> */}
       </Container>
 
     );
