@@ -35,7 +35,7 @@ export function create(event) {
     body: JSON.stringify({event})
   }).then(res => {
     if (res.ok) return res.json();
-    throw new Error("Invalid request to TM");
+    throw new Error("Invalid request to ticket create");
   })
   .then(data => console.log(data));
 }

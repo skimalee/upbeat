@@ -52,7 +52,7 @@ class LoginPage extends Component {
 
     return (
       <Container>
-        <FormContainer className="sign-up-container">
+        {/* <FormContainer className="sign-up-container">
           <Form action="#">
             <h1>Create Account</h1>
             <FormInput type="text" placeholder="Name" />
@@ -83,9 +83,9 @@ class LoginPage extends Component {
               <button class="ghost" id="signUp">Sign Up</button>
             </OverlayPanel>
           </Overlay>
-        </OverlayContainer>
-        {/* <LoginForm handleSignupOrLogin={this.props.handleSignupOrLogin}/>
-        <SignupForm handleSignupOrLogin={this.props.handleSignupOrLogin}/> */}
+        </OverlayContainer> */}
+        <LoginForm handleSignupOrLogin={this.props.handleSignupOrLogin}/>
+        <SignupForm handleSignupOrLogin={this.props.handleSignupOrLogin}/>
       </Container>
 
     );

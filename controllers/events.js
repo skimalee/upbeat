@@ -17,14 +17,15 @@ async function getEvents(req, res) {
 
 async function addEvent(req, res) {
     const user = await User.findById(req.body.event.user._id)
+    const incomingEvent = { 
+        name: req.body.event.trackEventData.name,
+        ticketmasterId: req.body.event.trackEventData.id,
+    }
+    const event = new Event(incomingEvent)
+    user.trackEvent.push(event)
+    user.save()
     console.log(user)
-    // const incomingEvent = { 
-    //     name: req.body.event.name,
-    //     ticketmasterId: req.body.event.id,
-    // }
-    // const event = new Event(incomingEvent)
-    // res.json({event})
-    res.send('hihi')
+    res.json({event})
 }
 
 module.exports = { getEvents, addEvent };
