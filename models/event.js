@@ -4,15 +4,7 @@ const Schema = mongoose.Schema;
 
 const eventSchema = new Schema({
     name: String,
-    date: Date,
-    price: {
-        type: Number,
-        min: 0
-    },
-    users: [{
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }]
+    ticketmasterId: String
 });
 
 module.exports = mongoose.model('Event', eventSchema)

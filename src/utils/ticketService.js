@@ -25,4 +25,19 @@ const BASE_URL = "/api/ticketmaster/";
   })
 }
 
-export default {routeToTM}
+export function create(event) {
+  return fetch(BASE_URL, {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    },
+    body: JSON.stringify({event})
+  }).then(res => {
+    if (res.ok) return res.json();
+    throw new Error("Invalid request to TM");
+  })
+  .then(data => console.log(data));
+}
+
+export default {routeToTM, create}

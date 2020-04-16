@@ -6,6 +6,8 @@ const eventsCtrl = require("../../controllers/events");
 /*---------- Public Routes ----------*/
 router.use(require('../../config/auth'));
 router.post("/get", checkAuth, eventsCtrl.getEvents);
+router.post("/", checkAuth, eventsCtrl.addEvent);
+
 
 /*---------- Protected Routes ----------*/
 
