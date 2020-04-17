@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import userService from '../../utils/userService'
-import { Form } from '../../pages/LoginPage/style'
 import { withRouter } from 'react-router-dom'
+import { Form, FormInput, RegButton } from './style'
+
 
 class SignupForm extends Component {
     state = {
@@ -17,6 +18,7 @@ class SignupForm extends Component {
 
     handleSubmit = async (event) => {
         event.preventDefault();
+        debugger
         try {
             await userService.signup(this.state)
             this.props.handleSignupOrLogin()
@@ -29,20 +31,13 @@ class SignupForm extends Component {
 
     render() {
         return (
-            <>
-                <Form onSubmit={this.handleSubmit}>
-                    <input type='text' name='name' placeholder='name' onChange={this.handleChange} />
-                    <input type='email' name='email' placeholder='email' onChange={this.handleChange} />
-                    <input type='password' name='password' placeholder='password' onChange={this.handleChange} />
-                    <div className="choiceContainer">
-                        <div style={{ alignSelf: 'center' }}>
-                            <div>Already have an account?</div>
-                            <p style={{ margin: 0 }}>Sign In <span onClick={this.props.doHandleToggle} style={{ color: 'dodgerblue', cursor: 'pointer' }}>Here</span></p>
-                        </div>
-                        <button type='submit' style={{ display: 'block' }}>Submit</button>
-                    </div>
-                </Form>
-            </>
+            <Form onSubmit={this.handleSubmit}>
+                <h1>Create Account</h1>
+                <FormInput type="text" placeholder="Name" name="name" value={this.state.name} onChange={this.handleChange}/>
+                <FormInput type="email" placeholder="Email" name="email" value={this.state.email} onChange={this.handleChange} />
+                <FormInput type="password" placeholder="Password" name="password" value={this.state.password} onChange={this.handleChange}/>
+                <RegButton>Sign Up</RegButton>
+          </Form>
         )
     }
 }

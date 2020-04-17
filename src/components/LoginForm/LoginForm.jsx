@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import userService from '../../utils/userService'
 import { withRouter } from 'react-router-dom'
-import { Form } from '../../pages/LoginPage/style'
+import { Form, FormInput, RegButton } from './style'
 
 class LoginForm extends Component {
   state = {
@@ -16,6 +16,7 @@ class LoginForm extends Component {
     e.preventDefault();
     try {
       await userService.login(this.state);
+      console.log('hello')
       this.props.handleSignupOrLogin();
       this.setState({
         email: '',
@@ -32,16 +33,11 @@ class LoginForm extends Component {
   render() {
     return (
       <>
-        <Form onSubmit={this.handleSubmit} >
-          <input type="email" placeholder="Email" value={this.state.email} name="email" onChange={this.handleChange} />
-          <input type="password"  placeholder="Password" value={this.state.pw} name="pw" onChange={this.handleChange} />
-            <div className="choiceContainer">
-              <div style={{ alignSelf: 'center' }}>
-                <div>Don't have an account?</div>
-                <p style={{ margin: 0 }}>Sign Up <span onClick={this.props.doHandleToggle} style={{ color: 'dodgerblue', cursor: 'pointer' }}>Here</span></p>
-              </div>
-              <button color={'dodgerblue'} type='submit' style={{ display: 'block' }}>Submit</button>
-            </div>
+        <Form onSubmit={this.handleSubmit}>
+            <h1>Log In</h1>
+            <FormInput type="email" placeholder="Email" name="email" value={this.state.email} onChange={this.handleChange}/>
+            <FormInput type="password" placeholder="Password" name="pw" value={this.state.pw} onChange={this.handleChange}/>
+            <RegButton type="submit">Sign In</RegButton>
         </Form>
       </>
     );

@@ -15,30 +15,49 @@ import ticketService from './utils/ticketService'
 class App extends React.Component {
   state = {
     user: userService.getUser(),
-    lat: null,
-    long: null,
+    location: {
+      lat: null,
+      long: null,
+    },
+    randomList: [],
     events: [],
     trackEvents: []
   };
 
-  componentDidMount() {
-    window.navigator.geolocation.getCurrentPosition((position) => {
+  async componentDidMount() {
+    await window.navigator.geolocation.getCurrentPosition((position) => {
       this.setState({
-        lat: position.coords.latitude,
-        long: position.coords.longitude,
-      });
+        location: {
+          lat: position.coords.latitude,
+          long: position.coords.longitude,
+        }
+      }, async () => await this.getRandomList());
     });
   }
 
+  getRandomList = async () => {
+    try {
+      const randomList = await ticketService.randomList(this.state.location)
+      console.log(randomList.data)
+      this.setState({
+        randomList: randomList.data._embedded.events
+      })
+    } catch(err) {
+      console.log(err)
+    }
+  }
 
   handleTrackEvent = async trackEventData => {
-    const payload = {user: this.state.user, trackEventData}
-    const trackEvent = await ticketService.create(payload)
+    // const payload = {user: this.state.user, trackEventData}
+    // const trackEvent = await ticketService.create(trackEventData)
     // this.setState(state => ({
     //   trackEvents: [...state.trackEvents, trackEvent]
     // }),
     // () => this.props.history.push("/"));
-    console.log(trackEventData)
+    const trackEvent = await ticketService.create(trackEventData)
+    this.setState(state => ({
+      trackEvents: [...state.trackEvents, trackEvent]
+    }))
   }
 
   setEvents = (events) => {
@@ -59,7 +78,8 @@ class App extends React.Component {
     this.setState({ user: null });
   };
 
-  handleSignupOrLogin = () => {
+  handleSignupOrLogin = async () => {
+    this.getRandomList();
     this.setState({ user: userService.getUser() });
   };
 
@@ -72,7 +92,7 @@ class App extends React.Component {
           <Route path="/" exact render={() => <Splash />} />
           <Route path="/login" exact render={() => (<LoginPage handleSignupOrLogin={this.handleSignupOrLogin} />)}/>
           <Route path="/events/:id" exact render={(location) => <EventDetail location={location} handleTrackEvent={this.handleTrackEvent}/>} />
-          <Route path="/search" render={() => <SearchBar setEvents={this.setEvents}/>}/>
+          <Route path="/search" render={() => <SearchBar setEvents={this.setEvents} randomList={this.state.randomList}/>}/>
           <Route path="/events" render={() => <Events events={this.state.events} resetSearch={this.resetSearch}/>}/>
           <Route path="/track" render={() => <TrackListPage />}/>
         </Switch>

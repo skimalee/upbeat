@@ -1,13 +1,13 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 const Event = require('../../models/event')
-const eventsCtrl = require("../../controllers/events");
+const eventsCtrl = require('../../controllers/events');
 
 /*---------- Public Routes ----------*/
 router.use(require('../../config/auth'));
-router.post("/get", checkAuth, eventsCtrl.getEvents);
-router.post("/", checkAuth, eventsCtrl.addEvent);
-
+router.post('/get', checkAuth, eventsCtrl.getEvents);
+router.post('/', checkAuth, eventsCtrl.addEvent);
+router.post('/random', checkAuth, eventsCtrl.getRandom);
 
 /*---------- Protected Routes ----------*/
 

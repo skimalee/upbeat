@@ -1,11 +1,12 @@
-import React from "react";
-import { SearchBarForm, SearchBarContainer } from "./style";
-import ticketService from "../../utils/ticketService";
+import React from 'react';
+import { SearchBarForm, SearchBarContainer } from './style';
+import ticketService from '../../utils/ticketService';
+import RandomList from '../../components/RandomList/RandomList';
 import { withRouter } from 'react-router-dom'
 
 class SearchBar extends React.Component {
   state = {
-    searchTerm: "",
+    searchTerm: '',
   };
 
   handleChange = (event) => {
@@ -16,15 +17,15 @@ class SearchBar extends React.Component {
     event.preventDefault();
     const { searchTerm } = this.state;
     const searchResults = await ticketService.routeToTM(searchTerm);
-    console.log("this is the results", searchResults)
+    console.log('this is the results', searchResults)
     this.props.setEvents(searchResults)
-    this.props.history.push("/events")
+    this.props.history.push('/events')
   };
 
   render() {
     return (
-      <SearchBarContainer>
-        <div className="searchBarFormContainer">
+      <>
+        <SearchBarContainer>
           <SearchBarForm onSubmit={this.handleSubmit}>
             <input
               type="text"
@@ -33,8 +34,9 @@ class SearchBar extends React.Component {
             />
             <button type="submit">GO</button>
           </SearchBarForm>
-        </div>
-      </SearchBarContainer>
+        </SearchBarContainer>
+        <RandomList randomList={this.props.randomList}/>
+      </>
     );
   }
 }

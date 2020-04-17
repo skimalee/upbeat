@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const SearchBarContainer = styled.div`
     background: linear-gradient(to right bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 133, 0.5)), no-repeat center/80%  url('https://i.imgur.com/kK5NDEU.jpg');
     background-size: cover;
-    height: 90vh;
+    height: 70vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -38,7 +38,14 @@ export const SearchBarForm = styled.form`
         width: 3.5rem;
         border-radius: 10px;
         margin-left: 1rem;
+        transition: transform 80ms ease-in;
         box-shadow: 0 14px 28px rgba(0,0,0,0.25), 
-			        0 10px 10px rgba(0,0,0,0.22);
+                    0 10px 10px rgba(0,0,0,0.22);  
+    }
+    & > button:focus {
+        outline: none;
+    }
+    & > button:active {
+        transform: scale(0.95);
     }
 `

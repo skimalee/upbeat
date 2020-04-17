@@ -3,8 +3,10 @@ const jwt = require('jsonwebtoken');
 const SECRET = process.env.SECRET;
 
 async function signup(req, res) {
-  const user = new User(req.body);
+  console.log(req.body)
   try {
+    const user = new User(req.body.user);
+    console.log(user)
     await user.save();
     const token = createJWT(user);
     console.log(token)
@@ -17,9 +19,10 @@ async function signup(req, res) {
 
 async function login(req, res) {
   try {
-    const user = await (await User.findOne({email: req.body.email})).populate('events').execPopulate();
+    const user = await User.findOne({email: req.body.creds.email})
+    console.log(user)
     if (!user) return res.status(401).json({err: 'bad credentials'});
-    user.comparePassword(req.body.pw, (err, isMatch) => {
+    user.comparePassword(req.body.creds.pw, (err, isMatch) => {
       if (isMatch) {
         const token = createJWT(user);
         res.json({token});

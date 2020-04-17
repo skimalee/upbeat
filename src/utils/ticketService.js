@@ -40,4 +40,22 @@ export function create(event) {
   .then(data => console.log(data));
 }
 
-export default {routeToTM, create}
+export function randomList(location) {
+  return fetch(BASE_URL + "random", {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    },
+    body: JSON.stringify({location})
+  }).then(res => {
+    if (res.ok) return res.json();
+    throw new Error("Invalid request to randomList");
+  })
+  .then(data => {
+    return data
+  });
+}
+
+
+export default {routeToTM, create, randomList}
