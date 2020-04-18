@@ -15,17 +15,20 @@ async function getEvents(req, res) {
         })
 }
 
-async function addEvent(req, res) {
-    const user = await User.findById(req.body.event.user._id)
-    const incomingEvent = { 
-        name: req.body.event.trackEventData.name,
-        ticketmasterId: req.body.event.trackEventData.id,
+async function  addEvent(req, res) {
+    const event = await Event.findOne({eventId: req.body.event.eventId})
+    if (event) {
+        event.user.push(req.user)
+        event.save();
+        console.log(event)
+        res.status(201).json({event})
+    } else {
+        const newEvent = await Event.create(req.body.event)
+        newEvent.user.push(req.user)
+        newEvent.save();
+        console.log(newEvent)
+        res.status(201).json({newEvent})
     }
-    const event = new Event(incomingEvent)
-    user.trackEvent.push(event)
-    user.save()
-    console.log(user)
-    res.json({event})
 }
 
 async function getRandom(req, res) {

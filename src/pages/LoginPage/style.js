@@ -12,14 +12,13 @@ const show = keyframes`
 `
 
 export const Background = styled.div`
+	background: url('https://i.imgur.com/7Tg7kDg.jpg');
     background-size: cover;
     height: 100vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
 	align-items: center;
-	filter: grayscale()
-	
 `
 
 export const Container = styled.div`
@@ -170,5 +169,5 @@ export const SignupLoginContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	align-content: center;
-	margin: 5rem auto;
+	margin: 2rem auto;
 `

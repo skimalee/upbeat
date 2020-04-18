@@ -1,15 +1,12 @@
 import styled from 'styled-components'
 
 export const SplashContainer = styled.div`
-    background-image: url('https://i.imgur.com/LkGuWbL.jpg');
+    background-image: no-repeat center/80% url('https://i.imgur.com/7Tg7kDg.jpg');
     background-size: cover;
-    height: 100vh;
+    height: 80vh;
     display: flex;
     flex-direction: row;
     justify-content: center;
-    &.splash{
-        filter: grayscale(100%);
-    }
 `
 
 export const AppName = styled.h1`

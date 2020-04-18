@@ -8,7 +8,6 @@ const eventSchema = new Schema({
     thumbnail: String,
     venue: String,
     dateTime: Date,
-    seatMap: String,
     user: [{
         type: Schema.Types.ObjectId, 
         ref: 'User'

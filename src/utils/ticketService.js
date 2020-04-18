@@ -3,7 +3,7 @@ import tokenService from "./tokenService";
 // const BASE_URL = "https://app.ticketmaster.com/discovery/v2/";
 const BASE_URL = "/api/ticketmaster/";
 
-  async function routeToTM(query) {
+async function routeToTM(query) {
   return fetch(BASE_URL + "get", {
     method: "POST",
     headers: { 
@@ -25,7 +25,7 @@ const BASE_URL = "/api/ticketmaster/";
   })
 }
 
-export function create(event) {
+async function create(event) {
   return fetch(BASE_URL, {
     method: 'POST',
     headers: {
@@ -37,10 +37,10 @@ export function create(event) {
     if (res.ok) return res.json();
     throw new Error("Invalid request to ticket create");
   })
-  .then(data => console.log(data));
+  .then(data => data);
 }
 
-export function randomList(location) {
+async function randomList(location) {
   return fetch(BASE_URL + "random", {
     method: 'POST',
     headers: {
@@ -57,5 +57,9 @@ export function randomList(location) {
   });
 }
 
+async function getTrackList() {
+  console.log('hello')
+  
+}
 
-export default {routeToTM, create, randomList}
+export default {routeToTM, create, randomList, getTrackList}

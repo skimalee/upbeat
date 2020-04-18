@@ -35,6 +35,7 @@ class SearchBar extends React.Component {
             <button type="submit">GO</button>
           </SearchBarForm>
         </SearchBarContainer>
+        <h1></h1>
         <RandomList randomList={this.props.randomList}/>
       </>
     );

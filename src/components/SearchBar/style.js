@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const SearchBarContainer = styled.div`
-    background: linear-gradient(to right bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 133, 0.5)), no-repeat center/80%  url('https://i.imgur.com/kK5NDEU.jpg');
+    background: linear-gradient(to right bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 133, 0.5)), no-repeat center/80% url('https://i.imgur.com/kK5NDEU.jpg');
     background-size: cover;
     height: 70vh;
     display: flex;

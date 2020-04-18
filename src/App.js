@@ -48,16 +48,15 @@ class App extends React.Component {
   }
 
   handleTrackEvent = async trackEventData => {
-    // const payload = {user: this.state.user, trackEventData}
-    // const trackEvent = await ticketService.create(trackEventData)
-    // this.setState(state => ({
-    //   trackEvents: [...state.trackEvents, trackEvent]
-    // }),
-    // () => this.props.history.push("/"));
     const trackEvent = await ticketService.create(trackEventData)
+    console.log(trackEvent)
     this.setState(state => ({
       trackEvents: [...state.trackEvents, trackEvent]
     }))
+  }
+
+  getTrackList = async () => {
+    const trackList = await ticketService.getTrackList()
   }
 
   setEvents = (events) => {
@@ -80,6 +79,7 @@ class App extends React.Component {
 
   handleSignupOrLogin = async () => {
     this.getRandomList();
+    this.getTrackList();
     this.setState({ user: userService.getUser() });
   };
 

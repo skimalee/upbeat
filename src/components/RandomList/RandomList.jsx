@@ -1,15 +1,18 @@
 import React from 'react';
-import { Container, RandomListContainer } from './style';
+import { Container, RandomListContainer, EventCard } from './style';
 
 const RandomList = (props) => {
     return (
         <Container>
+            <h1>Concerts</h1>
             <RandomListContainer>
-                <h1>Concerts in your area</h1>
                 {
                     props.randomList.map(event => {
                         return (
-                            <p>{event.name}</p>
+                            <EventCard>
+                                <p>{event.name}</p>
+                                <img src={event.images[1].url}/>
+                            </EventCard>
                         )
                     })
                 }

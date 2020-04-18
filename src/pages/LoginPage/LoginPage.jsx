@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import SignupForm from '../../components/SignupForm/SignupForm'
 import LoginForm from '../../components/LoginForm/LoginForm'
-import { SplashContainer } from '../../components/Splash/style';
 import {
   Container,
   SignupLoginContainer,
@@ -28,7 +27,6 @@ class LoginPage extends Component {
     const { isLoginForm } = this.state
 
     return (
-
       <SignupLoginContainer>
         <Container className={`${isLoginForm ? "" : "right-panel-active "}`} >
           <FormContainer className="sign-up-container">
@@ -57,8 +55,6 @@ class LoginPage extends Component {
           </OverlayContainer>
         </Container>
       </SignupLoginContainer>
-
-  
     );
   }
 }

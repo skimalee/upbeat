@@ -9,8 +9,15 @@ const EventDetail = (props) => {
     return (
         <DetailHeader>
             <h1>{event.name}</h1>
-            <button onClick={() => props.handleTrackEvent(event)}>Track Event</button>
-            
+            <button onClick={() => props.handleTrackEvent({
+                    name: event.name,
+                    eventId: event.id,
+                    thumbnail: event.images[0].url,
+                    venue: event._embedded.venues[0].name,
+                    time: event.dates.start.localDate,
+                    date: event.dates.start.localTime,
+                })}>Track Event
+            </button>
         </DetailHeader>
     );
 };
