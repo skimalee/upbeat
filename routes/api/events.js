@@ -8,6 +8,7 @@ router.use(require('../../config/auth'));
 router.post('/get', checkAuth, eventsCtrl.getEvents);
 router.post('/', checkAuth, eventsCtrl.addEvent);
 router.post('/random', checkAuth, eventsCtrl.getRandom);
+router.get('/getTrackList', checkAuth, eventsCtrl.getTrackList)
 
 /*---------- Protected Routes ----------*/
 

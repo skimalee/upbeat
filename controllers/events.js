@@ -43,4 +43,10 @@ async function getRandom(req, res) {
         res.json({data})
     })
 }
-module.exports = { getEvents, addEvent, getRandom };
+
+async function getTrackList(req, res) {
+    const events = await Event.find()
+    const trackList = events.filter(e => e.user.includes(req.user._id))
+    res.status(201).json(trackList)
+}
+module.exports = { getEvents, addEvent, getRandom, getTrackList };

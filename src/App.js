@@ -51,12 +51,20 @@ class App extends React.Component {
     const trackEvent = await ticketService.create(trackEventData)
     console.log(trackEvent)
     this.setState(state => ({
-      trackEvents: [...state.trackEvents, trackEvent]
+      trackEvents: [...state.trackEvents, trackEvent.newEvent]
     }))
+  }
+  
+  handleUntrackEvent = async eventId => {
+    const trackList = await ticketService.untrack(eventId);
   }
 
   getTrackList = async () => {
     const trackList = await ticketService.getTrackList()
+    console.log(trackList)
+    this.setState({
+      trackEvents: trackList
+    })
   }
 
   setEvents = (events) => {
@@ -91,10 +99,10 @@ class App extends React.Component {
         <Switch>
           <Route path="/" exact render={() => <Splash />} />
           <Route path="/login" exact render={() => (<LoginPage handleSignupOrLogin={this.handleSignupOrLogin} />)}/>
-          <Route path="/events/:id" exact render={(location) => <EventDetail location={location} handleTrackEvent={this.handleTrackEvent}/>} />
+          <Route path="/events/:id" exact render={(location) => <EventDetail handleUntrackEvent={this.handleUntrackEvent} trackList={this.state.trackEvents} location={location} handleTrackEvent={this.handleTrackEvent}/>} />
           <Route path="/search" render={() => <SearchBar setEvents={this.setEvents} randomList={this.state.randomList}/>}/>
           <Route path="/events" render={() => <Events events={this.state.events} resetSearch={this.resetSearch}/>}/>
-          <Route path="/track" render={() => <TrackListPage />}/>
+          <Route path="/track" render={() => <TrackListPage trackList={this.state.trackEvents}/>}/>
         </Switch>
       </div>
     );

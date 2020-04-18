@@ -41,7 +41,7 @@ async function create(event) {
 }
 
 async function randomList(location) {
-  return fetch(BASE_URL + "random", {
+  return fetch(BASE_URL + 'random', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
@@ -50,16 +50,40 @@ async function randomList(location) {
     body: JSON.stringify({location})
   }).then(res => {
     if (res.ok) return res.json();
-    throw new Error("Invalid request to randomList");
-  })
-  .then(data => {
+    throw new Error('Invalid request to randomList');
+  }).then(data => {
     return data
   });
 }
 
 async function getTrackList() {
-  console.log('hello')
-  
+  return fetch(BASE_URL + 'getTrackList', {
+    headers: {
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer ' + tokenService.getToken()
+    }
+  }).then(res => {
+    if (res.ok) return res.json();
+    throw new Error('Invalid request to getTrackList');
+  }).then(data => {
+    return data
+  })
 }
 
-export default {routeToTM, create, randomList, getTrackList}
+async function untrack(eventId) {
+  return fetch(BASE_URL + 'untrack', {
+    method: 'POST',
+    headers: {
+      'Content-type': 'application/json',
+      'Authorization': 'Bearer '  + tokenService.getToken()
+    },
+    body: JSON.stringify({eventId})
+  }).then(res => {
+    if (res.ok) return res.json();
+    throw new Error('Invalid request to untrack');
+  }).then(data => {
+    return data
+  })
+}
+
+export default {routeToTM, create, randomList, getTrackList, untrack}
