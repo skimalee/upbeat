@@ -49,3 +49,19 @@ export const SearchBarForm = styled.form`
         transform: scale(0.95);
     }
 `
+
+export const SearchBarGroup = styled.div`
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: -6rem;
+    & > h1 {
+        font-size: 2rem;
+        color: #FBF5F4;
+        margin-bottom: 5rem;
+        text-shadow: 0 14px 28px rgba(0,0,0,0.25), 
+                    0 10px 10px rgba(0,0,0,0.22);  
+        
+    }
+`

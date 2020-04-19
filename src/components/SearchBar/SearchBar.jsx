@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchBarForm, SearchBarContainer } from './style';
+import { SearchBarForm, SearchBarContainer, SearchBarGroup } from './style';
 import ticketService from '../../utils/ticketService';
 import RandomList from '../../components/RandomList/RandomList';
 import { withRouter } from 'react-router-dom'
@@ -26,14 +26,17 @@ class SearchBar extends React.Component {
     return (
       <>
         <SearchBarContainer>
-          <SearchBarForm onSubmit={this.handleSubmit}>
-            <input
-              type="text"
-              placeholder="Search for an artist..."
-              onChange={this.handleChange}
-            />
-            <button type="submit">GO</button>
-          </SearchBarForm>
+          <SearchBarGroup>
+          <h1>Who do you want to vibe with next?</h1>
+            <SearchBarForm onSubmit={this.handleSubmit}>
+              <input
+                type="text"
+                placeholder="Search for an artist..."
+                onChange={this.handleChange}
+              />
+              <button type="submit">GO</button>
+            </SearchBarForm>
+          </SearchBarGroup>
         </SearchBarContainer>
         <h1></h1>
         <RandomList randomList={this.props.randomList}/>
