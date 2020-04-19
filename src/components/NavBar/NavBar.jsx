@@ -17,7 +17,7 @@ const NavBar = (props) => {
 
     return (
         <NavContainer>
-            <Logo>upbeat</Logo>
+           <Link to='/search'><Logo>upbeat</Logo></Link>
             {nav}
         </NavContainer>
     );

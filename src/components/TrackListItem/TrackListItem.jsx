@@ -10,6 +10,7 @@ const TrackListItem = (props) => {
               return (
                 <EventCard>
                   <p>{event.name}</p>
+                  <img src={event.thumbnail} />
                
                 </EventCard>
               )
