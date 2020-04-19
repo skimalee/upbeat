@@ -9,6 +9,7 @@ router.post('/get', checkAuth, eventsCtrl.getEvents);
 router.post('/', checkAuth, eventsCtrl.addEvent);
 router.post('/random', checkAuth, eventsCtrl.getRandom);
 router.get('/getTrackList', checkAuth, eventsCtrl.getTrackList)
+router.post('/untrack', checkAuth, eventsCtrl.untrack)
 
 /*---------- Protected Routes ----------*/
 

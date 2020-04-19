@@ -28,7 +28,7 @@ const Events = (props) => {
                         </EventContainer>
                     )
                 })
-                : "No results found"
+                : "No Events found"
             }
         </div>
     );

@@ -1,10 +1,22 @@
 import React from 'react';
+import { Container, RandomListContainer, EventCard } from '../../components/RandomList/style'
 
-const TrackListItem = (event, handleDeleteEvent) => {
+const TrackListItem = (props) => {
     return (
-        <div>
-          <h1>this is a tracked event</h1>
-        </div>
+      <Container>
+        <RandomListContainer>
+          {
+            props.trackEvents.map(event => {
+              return (
+                <EventCard>
+                  <p>{event.name}</p>
+               
+                </EventCard>
+              )
+            })
+          }
+        </RandomListContainer>
+      </Container>
     );
 };
 

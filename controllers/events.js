@@ -16,18 +16,19 @@ async function getEvents(req, res) {
 }
 
 async function  addEvent(req, res) {
-    const event = await Event.findOne({eventId: req.body.event.eventId})
+    let event = await Event.findOne({eventId: req.body.event.eventId})
+    console.log(event)
     if (event) {
         event.user.push(req.user)
         event.save();
         console.log(event)
         res.status(201).json({event})
     } else {
-        const newEvent = await Event.create(req.body.event)
-        newEvent.user.push(req.user)
-        newEvent.save();
-        console.log(newEvent)
-        res.status(201).json({newEvent})
+        event = await Event.create(req.body.event)
+        event.user.push(req.user)
+        event.save();
+        console.log(event)
+        res.status(201).json({event})
     }
 }
 
@@ -49,4 +50,15 @@ async function getTrackList(req, res) {
     const trackList = events.filter(e => e.user.includes(req.user._id))
     res.status(201).json(trackList)
 }
-module.exports = { getEvents, addEvent, getRandom, getTrackList };
+
+async function untrack(req, res) {
+    const event = await Event.findOne({eventId: req.body.eventId})
+    const idx = event.user.indexOf(req.user._id)
+    event.user.splice(idx, 1)
+    await event.save();
+    const events = await Event.find()
+    const trackList = events.filter(e => e.user.includes(req.user._id))
+    res.status(201).json(trackList)
+}
+
+module.exports = { getEvents, addEvent, getRandom, getTrackList, untrack };

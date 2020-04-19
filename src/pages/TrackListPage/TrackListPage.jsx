@@ -1,10 +1,10 @@
 import React from 'react';
 import TrackListItem from '../../components/TrackListItem/TrackListItem'
 
-const TrackListPage = () => {
+const TrackListPage = (props) => {
     return (
         <div>
-            <TrackListItem/>
+            <TrackListItem getTrackList={props.getTrackList} trackEvents={props.trackEvents}/>
         </div>
     );
 };
