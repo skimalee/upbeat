@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 
 export const EventContainer = styled.div`
@@ -8,7 +9,7 @@ export const EventContainer = styled.div`
     border: 1px solid gray;
     display: flex;
     flex-direction: row;
-    padding: 2rem;
+    padding: 1rem;
     justify-content: space-between;
     align-content: center;
     align-items: center;
@@ -27,10 +28,9 @@ export const EventContainer = styled.div`
         padding: 12px 45px;
         letter-spacing: 1px;
         position: absolute;
-        right: 10px;
     }
 `
-export const DateTimeLoc = styled.div`
+export const DateTime = styled.div`
     display: flex;
     flex-direction: column;
 `
@@ -38,4 +38,31 @@ export const NoEvents = styled.div`
     font-size: 3rem;
     text-align: center;
     padding: 3rem;
+`
+export const EventName = styled.div`
+    display: flex;
+    flex-direction: column;
+    & > img {
+        height: 7rem;
+        width: auto;
+    }
+`
+
+export const Location = styled.div`
+    /* display: flex;
+    flex-direction: column;
+    text-align: center; */
+`
+
+export const InfoLink = styled(Link)`
+    & > button {
+        border-style: none;
+        background: #FF4B2B;
+        color: white;
+        height: 3.5rem;
+        width: 7rem;
+        border-radius: 10px;
+        margin-left: 1rem;
+        transition: transform 80ms ease-in;
+    }
 `
