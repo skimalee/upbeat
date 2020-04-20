@@ -19,8 +19,8 @@ const EventDetail = (props) => {
         console.log('this is from the api')
     }
 
-    const dateToFormat = `${event.date}`;
-    const dateToFormat2 = `${event.dates.start.dateTime}`
+    const dateToFormat = event._id ? `${event.date}` : `${event.dates.start.dateTime}`
+
 
     return (
         <>
@@ -62,12 +62,15 @@ const EventDetail = (props) => {
                 <DetailContentTernary>
                     <Info>
                         <div className='dateTime'>
-                            <DateMoment format='dddd, MMM D, YYYY'>{dateToFormat2}</DateMoment>
-                            <p className='time'>{event.dates.start.localTime}</p>
+                            <DateMoment format='dddd, MMM D, YYYY'>{dateToFormat}</DateMoment>
+                            <p className='time'>{event.time}</p>
                         </div>
-                        <p className='venue'>{event._embedded.venues[0].name}</p> 
-                        <img src={`${event.seatmap.staticUrl}`} />
-                        <button href={`${event.url}`} target='_blank'>Buy Tickets</button>
+                        <Address>
+                            <p className='venue'>{event.venue}</p> 
+                            <p className='address'>{event.address}</p>
+                            <p className='city'>{event.city}, {event.state}</p>
+                        </Address>
+                        <button><a href={`${event.buyTickets}`} target='_blank'>Buy Tickets</a></button>
                     </Info>
                     <img src={event.thumbnail}/> 
                 </DetailContentTernary>
@@ -75,15 +78,15 @@ const EventDetail = (props) => {
                  <DetailContentTernary>
                      <Info>
                          <div className='dateTime'>
-                            <DateMoment format='dddd, MMM D, YYYY'>{dateToFormat2}</DateMoment>
+                            <DateMoment format='dddd, MMM D, YYYY'>{dateToFormat}</DateMoment>
                             <p className='time'>{event.dates.start.localTime}</p>
                         </div>
                         <Address>
                             <p className='venue'>{event._embedded.venues[0].name}</p>
                             <p className='address'>{event._embedded.venues[0].address.line1}</p>
-                            <p className='city'>{`${event._embedded.venues[0].city.name}, ${event._embedded.venues[0].state.name}`}</p>
+                            <p className='city'>{event._embedded.venues[0].city.name}, {event._embedded.venues[0].state.name}</p>
                         </Address>
-                        <button href={`${event.url}`} target='_blank'>Buy Tickets</button>
+                        <button><a href={event.url} target='_blank'>Buy Tickets</a></button>
                      </Info>
                      <img src={event.images[1].url}/> 
                  </DetailContentTernary>}
