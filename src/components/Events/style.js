@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 export const EventContainer = styled.div`
     position: relative;
-    margin: auto;
+    margin: 2rem auto;
     width: 80%;
     border: 1px solid gray;
     display: flex;
@@ -12,7 +12,7 @@ export const EventContainer = styled.div`
     justify-content: space-between;
     align-content: center;
     align-items: center;
-    border-bottom: none;
+
     & > img {
         height: 8rem;
     }

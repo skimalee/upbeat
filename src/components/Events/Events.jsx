@@ -9,7 +9,6 @@ import {
 const Events = (props) => {
     return (
         <div>
-            <h1>this is the events component</h1>
             <button onClick={props.resetSearch}>Go Back</button>
             {   
                 props.events ? 

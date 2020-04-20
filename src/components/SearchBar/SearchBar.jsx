@@ -27,7 +27,7 @@ class SearchBar extends React.Component {
       <>
         <SearchBarContainer>
           <SearchBarGroup>
-          <h1>Who do you want to vibe with next?</h1>
+          <h1>Who would you like to vibe with next?</h1>
             <SearchBarForm onSubmit={this.handleSubmit}>
               <input
                 type="text"

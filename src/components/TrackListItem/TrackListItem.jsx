@@ -1,5 +1,5 @@
 import React from 'react';
-import { Container, RandomListContainer, EventCard } from '../../components/RandomList/style'
+import { Container, RandomListContainer, EventCard, EventLink } from '../../components/RandomList/style'
 
 const TrackListItem = (props) => {
     return (
@@ -9,9 +9,10 @@ const TrackListItem = (props) => {
             props.trackEvents.map(event => {
               return (
                 <EventCard>
-                  <p>{event.name}</p>
-                  <img src={event.thumbnail} />
-               
+                  <EventLink to={{pathname: `/events/${event.id}`, state: {event}}}>
+                    <p>{event.name}</p>
+                    <img src={event.thumbnail} />
+                  </EventLink>
                 </EventCard>
               )
             })
