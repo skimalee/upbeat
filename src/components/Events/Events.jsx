@@ -1,15 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { BackLink } from '../../components/EventDetail/style'
 
 import { 
     EventContainer,
-    DateTimeLoc
+    DateTimeLoc,
+    NoEvents
 } from './style'
 
 const Events = (props) => {
     return (
         <div>
-            <button onClick={props.resetSearch}>Go Back</button>
+            <BackLink to='/search' onClick={props.resetSearch}>Back to Search</BackLink>  
             {   
                 props.events ? 
                 props.events.map(event => {
@@ -27,7 +29,8 @@ const Events = (props) => {
                         </EventContainer>
                     )
                 })
-                : "No Events found"
+                : <NoEvents>No Events found</NoEvents>
+
             }
         </div>
     );

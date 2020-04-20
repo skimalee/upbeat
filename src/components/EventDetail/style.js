@@ -1,5 +1,6 @@
 import styled from 'styled-components'
 import Moment from 'react-moment'
+import { Link } from 'react-router-dom'
 
 export const DetailHeader = styled.div`
     background: purple;
@@ -17,7 +18,15 @@ export const DetailHeader = styled.div`
         letter-spacing: .1rem;
         width: 127px;
         border-radius: 5px;
+        transition: transform 80ms ease-in;
     }
+    & > button:focus {
+        outline: none;
+    }
+    & > button:active {
+        transform: scale(0.95);
+    }
+
     & > h1 {
         font-size: 6rem;
         width: 70%;
@@ -64,6 +73,9 @@ export const Info = styled.div`
     & > .dateTime > .time {
         font-size: 2rem;
     }
+    & > .time {
+        padding-left: 3rem;
+    }
     & > button {
         margin-left: 3rem;
         margin-top: 3rem;
@@ -104,4 +116,10 @@ export const Address = styled.div`
         font-size: 2rem;
         margin: 0;
     }
+`
+
+export const BackLink = styled(Link)`
+    color: purple;
+    margin: 3rem;
+    padding-top: 1rem;
 `

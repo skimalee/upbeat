@@ -1,4 +1,5 @@
 import React from 'react';
+import { BackLink } from './style'
 
 import { 
     DetailHeader,
@@ -23,6 +24,7 @@ const EventDetail = (props) => {
 
     return (
         <>
+
             <DetailHeader>
                 <h1 style={event.name.length > 16 ? {fontSize: '3rem'} : {fontSize: '5rem'}}>{event.name}</h1>
                 {
@@ -55,7 +57,7 @@ const EventDetail = (props) => {
                 }
             </DetailHeader>
             <DetailContent> 
-                      
+                <BackLink to='/search' onClick={props.resetSearch}>Back to Search</BackLink>  
                 {event._id ? 
                 <DetailContentTernary>
                     <Info>
@@ -66,7 +68,6 @@ const EventDetail = (props) => {
                         <p className='venue'>{event._embedded.venues[0].name}</p> 
                         <img src={`${event.seatmap.staticUrl}`} />
                         <button href={`${event.url}`} target='_blank'>Buy Tickets</button>
-
                     </Info>
                     <img src={event.thumbnail}/> 
                 </DetailContentTernary>

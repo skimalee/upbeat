@@ -34,3 +34,8 @@ export const DateTimeLoc = styled.div`
     display: flex;
     flex-direction: column;
 `
+export const NoEvents = styled.div`
+    font-size: 3rem;
+    text-align: center;
+    padding: 3rem;
+`

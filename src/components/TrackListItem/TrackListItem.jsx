@@ -1,11 +1,12 @@
 import React from 'react';
 import Moment from 'react-moment'
+import { NoEvents } from '../../components/Events/style'
 import { 
   Container, 
   RandomListContainer, 
   EventCard, 
   EventLink, 
-  NameDate 
+  NameDate
 } from '../../components/RandomList/style'
 
 const TrackListItem = (props) => {
@@ -28,11 +29,11 @@ const TrackListItem = (props) => {
                 </EventCard>
               )
             })
-            : <h1>No events are being tracked</h1>
+            : <NoEvents>No events are being tracked</NoEvents>
           }
         </RandomListContainer>
       </Container>
     );
-};
+}
 
 export default TrackListItem;
