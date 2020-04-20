@@ -102,7 +102,7 @@ class App extends React.Component {
           <Route path="/events/:id" exact render={(location) => <EventDetail randomList={this.state.randomList} handleUntrackEvent={this.handleUntrackEvent} trackEvents={this.state.trackEvents} location={location} handleTrackEvent={this.handleTrackEvent}/>} />
           <Route path="/search" render={() => <SearchBar isLoading={this.state.isLoading} setEvents={this.setEvents} randomList={this.state.randomList}/>}/>
           <Route path="/events" render={() => <Events events={this.state.events} resetSearch={this.resetSearch}/>}/>
-          <Route path="/track" render={() => <TrackListPage getTrackList={this.getTrackList} trackEvents={this.state.trackEvents} />}/>
+          <Route path="/track" render={() => <TrackListPage getTrackList={this.getTrackList} randomList={this.state.randomList} trackEvents={this.state.trackEvents} />}/>
         </Switch>
       </div>
     );

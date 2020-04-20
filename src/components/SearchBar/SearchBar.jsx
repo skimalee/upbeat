@@ -1,8 +1,8 @@
 import React from 'react';
-import { SearchBarForm, SearchBarContainer, SearchBarGroup } from './style';
+import { SearchBarForm, SearchBarContainer, SearchBarGroup, ConcertContainer } from './style';
 import ticketService from '../../utils/ticketService';
 import RandomList from '../../components/RandomList/RandomList';
-import { withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom';
 
 class SearchBar extends React.Component {
   state = {
@@ -42,10 +42,10 @@ class SearchBar extends React.Component {
           this.props.isLoading ?
           <h1>Loading concerts in the area</h1>
           :
-          <div>
+          <ConcertContainer>
             <h1>Concerts in your area</h1>
             <RandomList randomList={this.props.randomList}/>
-          </div>
+          </ConcertContainer>
         }
       </>
     );

@@ -5,17 +5,14 @@ export const Container = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
-    & > h1 {
-        font-size: 2rem;
-        color: red;
-    }
+
 `
 
 export const RandomListContainer = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: center;
-    margin-top: 5rem;
+    margin-top: 1rem;
     flex-wrap: wrap;
     margin-left: -8px;
     margin-right: -8px;
@@ -55,7 +52,6 @@ export const NameDate = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-content: center;
     align-items: center;
     margin-top: -1rem;
     & > .eventName {

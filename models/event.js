@@ -7,7 +7,11 @@ const eventSchema = new Schema({
     eventId: String,
     thumbnail: String,
     venue: String,
-    dateTime: Date,
+    location: String,
+    date: Date,
+    time: String,
+    seatMap: String,
+    buyTickets: String,
     user: [{
         type: Schema.Types.ObjectId, 
         ref: 'User'

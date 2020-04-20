@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const NavContainer = styled.div`
     display: flex;
@@ -14,3 +15,4 @@ export const Logo = styled.h1`
     font-size: 2.5rem;
     /* letter-spacing: .25rem; */
 `
+

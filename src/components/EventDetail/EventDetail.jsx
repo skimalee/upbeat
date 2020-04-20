@@ -1,7 +1,12 @@
 import React from 'react';
+
 import { 
     DetailHeader,
-    DetailContent 
+    DetailContent,
+    DetailContentTernary,
+    Info,
+    DateMoment,
+    Address
 } from './style'
 
 const EventDetail = (props) => {
@@ -12,6 +17,9 @@ const EventDetail = (props) => {
     } else {
         console.log('this is from the api')
     }
+
+    const dateToFormat = `${event.date}`;
+    const dateToFormat2 = `${event.dates.start.dateTime}`
 
     return (
         <>
@@ -34,14 +42,51 @@ const EventDetail = (props) => {
                                 eventId: event.id,
                                 thumbnail: event.images[1].url,
                                 venue: event._embedded.venues[0].name,
-                                dateTime: event.dates.start.dateTime
+                                address: event._embedded.venues[0].address.line1,
+                                city: event._embedded.venues[0].city.name,
+                                state: event._embedded.venues[0].state.name,
+                                date: event.dates.start.dateTime,
+                                time: event.dates.start.localTime,
+                                seatMap: event.seatmap.staticUrl,
+                                buyTickets: event.url
+
                             })}>Track Event
                         </button>
                 }
             </DetailHeader>
-            <DetailContent>
-                { event._id ? <h1>{event.venue}</h1> : <h1>{event._embedded.venues[0].name}</h1> }
-            </DetailContent>
+            <DetailContent> 
+                      
+                {event._id ? 
+                <DetailContentTernary>
+                    <Info>
+                        <div className='dateTime'>
+                            <DateMoment format='dddd, MMM D, YYYY'>{dateToFormat2}</DateMoment>
+                            <p className='time'>{event.dates.start.localTime}</p>
+                        </div>
+                        <p className='venue'>{event._embedded.venues[0].name}</p> 
+                        <img src={`${event.seatmap.staticUrl}`} />
+                        <button href={`${event.url}`} target='_blank'>Buy Tickets</button>
+
+                    </Info>
+                    <img src={event.thumbnail}/> 
+                </DetailContentTernary>
+                  :
+                 <DetailContentTernary>
+                     <Info>
+                         <div className='dateTime'>
+                            <DateMoment format='dddd, MMM D, YYYY'>{dateToFormat2}</DateMoment>
+                            <p className='time'>{event.dates.start.localTime}</p>
+                        </div>
+                        <Address>
+                            <p className='venue'>{event._embedded.venues[0].name}</p>
+                            <p className='address'>{event._embedded.venues[0].address.line1}</p>
+                            <p className='city'>{`${event._embedded.venues[0].city.name}, ${event._embedded.venues[0].state.name}`}</p>
+                        </Address>
+                        <button href={`${event.url}`} target='_blank'>Buy Tickets</button>
+                     </Info>
+                     <img src={event.images[1].url}/> 
+                 </DetailContentTernary>}
+             </DetailContent> 
         </>
     );
 };

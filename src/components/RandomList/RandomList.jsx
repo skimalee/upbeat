@@ -10,7 +10,6 @@ const RandomList = (props) => {
         <Container>
             <RandomListContainer>
                 {
-                    props.randomList ?
                     props.randomList.map(event => {
                     const dateToFormat = `${event.dates.start.localDate}`;
 
@@ -26,7 +25,6 @@ const RandomList = (props) => {
                             </EventCard>
                         )
                     })
-                    : "none"
                 }
             </RandomListContainer>
         </Container>

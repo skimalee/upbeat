@@ -1,11 +1,12 @@
 import React from 'react';
 import TrackListItem from '../../components/TrackListItem/TrackListItem'
+import { TrackListContainer } from './style.js'
 
 const TrackListPage = (props) => {
     return (
-        <div>
-            <TrackListItem getTrackList={props.getTrackList} trackEvents={props.trackEvents}/>
-        </div>
+        <TrackListContainer>
+            <TrackListItem getTrackList={props.getTrackList} randomList={props.randomList} trackEvents={props.trackEvents}/> 
+        </TrackListContainer>
     );
 };
 
