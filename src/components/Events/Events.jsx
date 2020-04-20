@@ -16,7 +16,8 @@ const Events = (props) => {
     
     return (
         <div>
-            <BackLink to='/search' onClick={props.resetSearch}>Back to Search</BackLink>  
+            <BackLink to='/search' onClick={props.resetSearch}>Back to Search</BackLink>
+            <NoEvents>Search Results</NoEvents>
             {   
                 props.events ? 
                 props.events.map(event => {
@@ -38,12 +39,11 @@ const Events = (props) => {
                             </Location>
                             <InfoLink to={{pathname: `/events/${event.id}`, state: {event}}}>
                                 <button>GET INFO</button>
-                            </InfoLink>
-                            
+                            </InfoLink> 
                         </EventContainer>
                     )
                 })
-                : <NoEvents>No Events found</NoEvents>
+              : <NoEvents>No Events found</NoEvents>
 
             }
         </div>

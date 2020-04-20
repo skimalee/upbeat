@@ -12,6 +12,7 @@ import {
 const TrackListItem = (props) => {
     return (
       <Container>
+        <h1>Tracked Events</h1>
         <RandomListContainer>
           {
             props.trackEvents.length > 0 ? 
