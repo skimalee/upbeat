@@ -58,8 +58,9 @@ export const SearchBarGroup = styled.div`
     margin-top: -6rem;
     & > h1 {
         font-size: 2rem;
+        /* font-family: 'Baloo Paaji 2', cursive;         */
         color: #FBF5F4;
-        margin-bottom: 5rem;
+        margin-bottom: 3rem;
         text-shadow: 0 14px 28px rgba(0,0,0,0.25), 
                     0 10px 10px rgba(0,0,0,0.22);  
         

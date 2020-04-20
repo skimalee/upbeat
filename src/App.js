@@ -21,7 +21,8 @@ class App extends React.Component {
     },
     randomList: [],
     events: [],
-    trackEvents: []
+    trackEvents: [],
+    isLoading: true
   };
 
   async componentDidMount() {
@@ -30,7 +31,8 @@ class App extends React.Component {
         location: {
           lat: position.coords.latitude,
           long: position.coords.longitude,
-        }
+        },
+        isLoading: false
       }, async () => await this.getRandomList());
     });
   }
@@ -98,7 +100,7 @@ class App extends React.Component {
           <Route path="/" exact render={() => <Splash />} />
           <Route path="/login" exact render={() => (<LoginPage handleSignupOrLogin={this.handleSignupOrLogin} />)}/>
           <Route path="/events/:id" exact render={(location) => <EventDetail randomList={this.state.randomList} handleUntrackEvent={this.handleUntrackEvent} trackEvents={this.state.trackEvents} location={location} handleTrackEvent={this.handleTrackEvent}/>} />
-          <Route path="/search" render={() => <SearchBar setEvents={this.setEvents} randomList={this.state.randomList}/>}/>
+          <Route path="/search" render={() => <SearchBar isLoading={this.state.isLoading} setEvents={this.setEvents} randomList={this.state.randomList}/>}/>
           <Route path="/events" render={() => <Events events={this.state.events} resetSearch={this.resetSearch}/>}/>
           <Route path="/track" render={() => <TrackListPage getTrackList={this.getTrackList} trackEvents={this.state.trackEvents} />}/>
         </Switch>

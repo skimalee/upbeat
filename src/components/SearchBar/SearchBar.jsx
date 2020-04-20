@@ -38,8 +38,15 @@ class SearchBar extends React.Component {
             </SearchBarForm>
           </SearchBarGroup>
         </SearchBarContainer>
-        <h1></h1>
-        <RandomList randomList={this.props.randomList}/>
+        {
+          this.props.isLoading ?
+          <h1>Loading concerts in the area</h1>
+          :
+          <div>
+            <h1>Concerts in your area</h1>
+            <RandomList randomList={this.props.randomList}/>
+          </div>
+        }
       </>
     );
   }

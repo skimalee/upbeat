@@ -1,4 +1,5 @@
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 export const SplashContainer = styled.div`
     background-image: no-repeat center/80% url('https://i.imgur.com/7Tg7kDg.jpg');
@@ -18,7 +19,9 @@ export const AppName = styled.h1`
     margin-top: 5rem;
     font-family: 'Baloo Paaji 2', cursive;
     font-weight: bold;
-    & > Link {
-        font-size: 10rem;
-    }
+`
+
+export const UpbeatLink = styled(Link)`
+    font-family: 'Baloo Paaji 2', cursive;
+    font-size: 2.5rem;
 `

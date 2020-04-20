@@ -17,7 +17,7 @@ const NavBar = (props) => {
 
     return (
         <NavContainer>
-           <Link to='/search'><Logo>upbeat</Logo></Link>
+           <Link to={props.user ? '/search' : '/'}><Logo>upbeat</Logo></Link>
             {nav}
         </NavContainer>
     );

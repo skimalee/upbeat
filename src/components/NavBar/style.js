@@ -12,4 +12,5 @@ export const NavContainer = styled.div`
 export const Logo = styled.h1`
     font-family: 'Baloo Paaji 2', cursive;
     font-size: 2.5rem;
+    /* letter-spacing: .25rem; */
 `

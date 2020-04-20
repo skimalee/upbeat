@@ -34,7 +34,7 @@ async function  addEvent(req, res) {
 
 async function getRandom(req, res) {
     console.log(req.body)
-    const query = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&latlong=${req.body.location.lat},${req.body.location.long}&apikey=${process.env.TICKETMASTER_API}`
+    const query = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&radius=5&latlong=${req.body.location.lat},${req.body.location.long}&apikey=${process.env.TICKETMASTER_API}`
     await fetch(query)
     .then(res => {
         if (res.ok) return res.json()

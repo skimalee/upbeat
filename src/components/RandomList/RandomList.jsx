@@ -1,21 +1,27 @@
 import React from 'react';
-import { Link } from 'react-router-dom'
-import { Container, RandomListContainer, EventCard, EventLink } from './style';
+import { Container, RandomListContainer, EventCard, EventLink, NameDate } from './style';
+import Moment from 'react-moment';
+
 
 const RandomList = (props) => {
+
 
     return (
         <Container>
             <RandomListContainer>
                 {
                     props.randomList ?
-    
                     props.randomList.map(event => {
+                    const dateToFormat = `${event.dates.start.localDate}`;
+
                         return (
                             <EventCard>
                                 <EventLink to={{pathname: `/events/${event.id}`, state: {event}}}>
-                                        <p>{event.name}</p>
-                                        <img src={event.images[1].url}/>
+                                    <NameDate>
+                                        <p className="eventName">{event.name}</p>
+                                        <p className="date"><Moment format="MMM D">{dateToFormat}</Moment></p>
+                                    </NameDate>
+                                    <img src={event.images[1].url}/>
                                 </EventLink>
                             </EventCard>
                         )
