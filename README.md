@@ -19,7 +19,7 @@ This app includes the implementation of the Ticketmaster API, as well as Geoloca
 
 # Technologies used
 
-React.js, Node.js, Express, CSS, MongoDB
+React.js, Node.js, Express, MongoDB, JavaScript, HTML, CSS
 
 # Future enhancements
 1. Having a filtered search, (i.e. search by date, location, genre)
