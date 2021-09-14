@@ -9,6 +9,15 @@ export const SearchBarContainer = styled.div`
     align-items: center;
     align-content: center;
 `
+export const Button = styled.button`
+    width: 100px;
+`
+
+export const ButtonContainer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+`
 
 export const SearchBarForm = styled.form`
     display: flex;

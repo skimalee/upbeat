@@ -1,5 +1,5 @@
 import React from 'react';
-import { SearchBarForm, SearchBarContainer, SearchBarGroup, ConcertContainer } from './style';
+import { SearchBarForm, SearchBarContainer, SearchBarGroup, ConcertContainer, Button, ButtonContainer } from './style';
 import ticketService from '../../utils/ticketService';
 import RandomList from '../../components/RandomList/RandomList';
 import { withRouter } from 'react-router-dom';
@@ -46,7 +46,10 @@ class SearchBar extends React.Component {
           <ConcertContainer>
             <h1>Concerts in your area</h1>
             <RandomList randomList={this.props.randomList} page={this.props.page} getRandomList={this.props.getRandomList}/>
-            <button onClick={() => this.props.handleNextPage()}>Next</button>
+            <ButtonContainer>
+              {this.props.page !== 0 ? <Button onClick={() => this.props.handlePrevPage()}>Previous</Button> : <div></div>}
+              <Button onClick={() => this.props.handleNextPage()}>Next</Button>
+            </ButtonContainer>
           </ConcertContainer>
         }
       </>
