@@ -25,6 +25,7 @@ class SearchBar extends React.Component {
   render() {
     return (
       <>
+      {console.log('searchbar page', this.props.page)}
         <SearchBarContainer>
           <SearchBarGroup>
           <h1>Who would you like to vibe with next?</h1>
@@ -40,11 +41,12 @@ class SearchBar extends React.Component {
         </SearchBarContainer>
         {
           this.props.isLoading ?
-          <h1>Loading concerts in the area</h1>
+          <h1 style={{textAlign: 'center', marginTop: '1rem'}}>Loading concerts in the area</h1>
           :
           <ConcertContainer>
             <h1>Concerts in your area</h1>
-            <RandomList randomList={this.props.randomList}/>
+            <RandomList randomList={this.props.randomList} page={this.props.page} getRandomList={this.props.getRandomList}/>
+            <button onClick={() => this.props.handleNextPage()}>Next</button>
           </ConcertContainer>
         }
       </>

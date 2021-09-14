@@ -6,7 +6,7 @@ const Splash = () => {
     return (
         <SplashContainer className='splash'>
             <AppName>
-                <UpbeatLink to='/login' className='NavBar-link'>upbeat</UpbeatLink>
+                <UpbeatLink to='/login' className='NavBar-link'>click to enter</UpbeatLink>
             </AppName>
         </SplashContainer>
     )

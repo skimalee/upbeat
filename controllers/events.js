@@ -3,7 +3,6 @@ const User = require('../models/user')
 const fetch = require('node-fetch')
 
 
-
 async function getEvents(req, res) {
     const query=`https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&keyword=${req.body.query}&apikey=${process.env.TICKETMASTER_API}`.replace(' ', '%')
     await fetch(query)
@@ -34,20 +33,8 @@ async function  addEvent(req, res) {
 }
 
 async function getRandom(req, res) {
-    console.log('req.body', req)
-    const query = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&radius=5&latlong=${req.body.location.lat},${req.body.location.long}&apikey=${process.env.TICKETMASTER_API}`
-    await fetch(query)
-    .then(res => {
-        if (res.ok) return res.json()
-        throw new Error('Bad call')
-    })
-    .then(data => {
-        res.json({data})
-    })
-}
-
-async function getNextRandom(req, res) {
-    const query = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&radius=5&latlong=${req.body.location.lat},${req.body.location.long}&apikey=${process.env.TICKETMASTER_API}`
+    console.log('req', req.body)
+    const query = `https://app.ticketmaster.com/discovery/v2/events.json?classificationName=music&radius=5&page=${req.body.page}&latlong=${req.body.location.lat},${req.body.location.long}&apikey=${process.env.TICKETMASTER_API}`
     await fetch(query)
     .then(res => {
         if (res.ok) return res.json()

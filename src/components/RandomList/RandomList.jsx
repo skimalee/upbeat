@@ -1,8 +1,13 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Container, RandomListContainer, EventCard, EventLink, NameDate } from './style';
 import Moment from 'react-moment';
 
 const RandomList = (props) => {
+
+    useEffect(() => {
+        props.getRandomList();
+    }, [props.page])
+    console.log('randomlist page', props.page)
     return (
         <Container>
             <RandomListContainer>
