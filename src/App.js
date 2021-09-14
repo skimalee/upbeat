@@ -19,6 +19,7 @@ class App extends React.Component {
       lat: null,
       long: null,
     },
+    page: 0,
     randomList: [],
     events: [],
     trackEvents: [],
@@ -27,6 +28,7 @@ class App extends React.Component {
 
   async componentDidMount() {
     await window.navigator.geolocation.getCurrentPosition((position) => {
+      console.log(position)
       this.setState({
         location: {
           lat: position.coords.latitude,
@@ -39,14 +41,18 @@ class App extends React.Component {
 
   getRandomList = async () => {
     try {
-      const randomList = await ticketService.randomList(this.state.location)
-      console.log(randomList.data)
+      const randomList = await ticketService.randomList(this.state.location, this.state.page)
+      console.log('randomList', randomList.data._links.first)
       this.setState({
         randomList: randomList.data._embedded.events
       })
     } catch(err) {
       console.log(err)
     }
+  }
+
+  getNextRandom = () => {
+    this.setState({page: this.state.page})
   }
 
   handleTrackEvent = async trackEventData => {
@@ -100,7 +106,7 @@ class App extends React.Component {
           <Route path="/" exact render={() => <Splash />} />
           <Route path="/login" exact render={() => (<LoginPage handleSignupOrLogin={this.handleSignupOrLogin} />)}/>
           <Route path="/events/:id" exact render={(location) => <EventDetail randomList={this.state.randomList} handleUntrackEvent={this.handleUntrackEvent} trackEvents={this.state.trackEvents} location={location} handleTrackEvent={this.handleTrackEvent}/>} />
-          <Route path="/search" render={() => <SearchBar isLoading={this.state.isLoading} setEvents={this.setEvents} randomList={this.state.randomList}/>}/>
+          <Route path="/search" render={() => <SearchBar isLoading={this.state.isLoading} setEvents={this.setEvents} randomList={this.state.randomList} page={this.state.page} getNextRandom={this.getNextRandom}/>}/>
           <Route path="/events" render={() => <Events events={this.state.events} resetSearch={this.resetSearch}/>}/>
           <Route path="/track" render={() => <TrackListPage getTrackList={this.getTrackList} randomList={this.state.randomList} trackEvents={this.state.trackEvents} />}/>
         </Switch>

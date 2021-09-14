@@ -2,10 +2,7 @@ import React from 'react';
 import { Container, RandomListContainer, EventCard, EventLink, NameDate } from './style';
 import Moment from 'react-moment';
 
-
 const RandomList = (props) => {
-
-
     return (
         <Container>
             <RandomListContainer>
@@ -14,7 +11,7 @@ const RandomList = (props) => {
                     const dateToFormat = `${event.dates.start.localDate}`;
 
                         return (
-                            <EventCard>
+                            <EventCard key={event.id}>
                                 <EventLink to={{pathname: `/events/${event.id}`, state: {event}}}>
                                     <NameDate>
                                         <p className="eventName">{event.name}</p>

@@ -40,18 +40,20 @@ async function create(event) {
   .then(data => data);
 }
 
-async function randomList(location) {
+async function randomList(location, page) {
   return fetch(BASE_URL + 'random', {
     method: 'POST',
     headers: {
       'Content-type': 'application/json',
       'Authorization': 'Bearer ' + tokenService.getToken()
     },
-    body: JSON.stringify({location})
+    body: JSON.stringify({location, page})
   }).then(res => {
+    console.log('res', res)
     if (res.ok) return res.json();
     throw new Error('Invalid request to randomList');
   }).then(data => {
+    console.log('data', data)
     return data
   });
 }
