@@ -7,7 +7,7 @@ const RandomList = (props) => {
     useEffect(() => {
         props.getRandomList();
     }, [props.page])
-    console.log('randomlist page', props.page)
+    
     return (
         <Container>
             <RandomListContainer>

@@ -21,7 +21,6 @@ const Events = (props) => {
             {   
                 props.events ? 
                 props.events.map(event => {
-                    console.log(event)
                     const dateToFormat = `${event.dates.start.localDate}`
                     return (
                         <EventContainer key={event}>

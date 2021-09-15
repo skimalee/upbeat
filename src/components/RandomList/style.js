@@ -52,13 +52,13 @@ export const NameDate = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    align-items: center;
-    margin-top: -1rem;
+    align-items: flex-end;
     & > .eventName {
         width: 75%;
+        font-size: 14px;
     }
     & > .date {
         font-weight: bold;
-        font-size: 2rem;
+        font-size: 16px;
     }
 `

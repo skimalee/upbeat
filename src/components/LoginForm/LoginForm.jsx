@@ -16,7 +16,6 @@ class LoginForm extends Component {
     e.preventDefault();
     try {
       await userService.login(this.state);
-      console.log('hello')
       this.props.handleSignupOrLogin();
       this.setState({
         email: '',

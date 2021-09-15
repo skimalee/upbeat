@@ -17,7 +17,6 @@ class SearchBar extends React.Component {
     event.preventDefault();
     const { searchTerm } = this.state;
     const searchResults = await ticketService.routeToTM(searchTerm);
-    console.log('this is the results', searchResults)
     this.props.setEvents(searchResults)
     this.props.history.push('/events')
   };
@@ -25,7 +24,6 @@ class SearchBar extends React.Component {
   render() {
     return (
       <>
-      {console.log('searchbar page', this.props.page)}
         <SearchBarContainer>
           <SearchBarGroup>
           <h1>Who would you like to vibe with next?</h1>

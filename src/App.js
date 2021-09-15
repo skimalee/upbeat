@@ -28,7 +28,6 @@ class App extends React.Component {
 
   async componentDidMount() {
     await window.navigator.geolocation.getCurrentPosition((position) => {
-      console.log(position)
       this.setState({
         location: {
           lat: position.coords.latitude,
@@ -61,7 +60,6 @@ class App extends React.Component {
 
   handleTrackEvent = async trackEventData => {
     const trackEvent = await ticketService.create(trackEventData)
-    console.log(trackEvent)
     this.setState(state => ({
       trackEvents: [...state.trackEvents, trackEvent.event]
     })); 
@@ -75,7 +73,6 @@ class App extends React.Component {
 
   getTrackList = async () => {
     const trackList = await ticketService.getTrackList()
-    console.log(trackList)
     this.setState({trackEvents: trackList})
   }
 
@@ -104,7 +101,6 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        {console.log('app.js page', this.state.page)}
         <NavBar user={this.state.user} handleLogout={this.handleLogout} />
         <Switch>
           <Route path="/" exact render={() => <Splash />} />

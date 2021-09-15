@@ -13,14 +13,7 @@ import {
 const EventDetail = (props) => {
 
     const event = props.location.location.state.event
-    if (event._id) {
-        console.log('this is a mongoose object')
-    } else {
-        console.log('this is from the api')
-    }
-
     const dateToFormat = event._id ? `${event.date}` : `${event.dates.start.dateTime}`
-
 
     return (
         <>

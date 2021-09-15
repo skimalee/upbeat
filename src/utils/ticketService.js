@@ -1,6 +1,5 @@
 import tokenService from "./tokenService";
 
-// const BASE_URL = "https://app.ticketmaster.com/discovery/v2/";
 const BASE_URL = "/api/ticketmaster/";
 
 async function routeToTM(query) {
@@ -49,11 +48,9 @@ async function randomList(location, page) {
     },
     body: JSON.stringify({location, page})
   }).then(res => {
-    console.log('res', res)
     if (res.ok) return res.json();
     throw new Error('Invalid request to randomList');
   }).then(data => {
-    console.log('data', data)
     return data
   });
 }
