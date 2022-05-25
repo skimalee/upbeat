@@ -14,6 +14,7 @@ import {
 
 const Events = (props) => {
     
+    
     return (
         <div>
             <BackLink to='/search' onClick={props.resetSearch}>Back to Search</BackLink>

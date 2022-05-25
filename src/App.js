@@ -110,6 +110,9 @@ class App extends React.Component {
           <Route path="/events" render={() => <Events events={this.state.events} resetSearch={this.resetSearch}/>}/>
           <Route path="/track" render={() => <TrackListPage getTrackList={this.getTrackList} randomList={this.state.randomList} trackEvents={this.state.trackEvents} />}/>
         </Switch>
+        {matches.length && matches.map(m => (
+          m.type === "cat" ? <CatCard /> : <DogCard />
+        ))}
       </div>
     );
   }
